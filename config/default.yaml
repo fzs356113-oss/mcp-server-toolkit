@@ -1,0 +1,38 @@
+server:
+  name: mcp-server-toolkit
+  version: "1.0.0"
+  transport: stdio
+  host: "0.0.0.0"
+  port: 8080
+
+tools:
+  file_system:
+    enabled: true
+    allowed_paths:
+      - "."
+    max_file_size_mb: 10
+    allowed_extensions: []
+
+  web_fetch:
+    enabled: true
+    timeout: 30
+    max_response_size: 1048576
+    follow_redirects: true
+    user_agent: "MCP-Server-Toolkit/1.0"
+
+  database:
+    enabled: true
+    connection_string: "sqlite:///data.db"
+    pool_size: 5
+    max_overflow: 10
+    query_timeout: 30
+
+  shell:
+    enabled: true
+    allowed_commands: []
+    blocked_commands:
+      - "rm -rf /"
+      - "dd"
+      - "mkfs"
+    timeout: 60
+    working_directory: "."
